@@ -11,10 +11,11 @@ dotenv.config({path:"./config.env"});
 require('./db/databse')
 
 const PORT=process.env.PORT||8000;
-mongoose.connect("mongodb+srv://saurabh:Sau183910121@cluster0.sxs9f.mongodb.net/saurabhdb?retryWrites=true&w=majority",{
+mongoose.connect(process.env.DB,{
     useNewUrlParser: true
-}
-);
+}).then(()=>{
+    console.log('again')
+});
 
 app.use(cors());
 app.use(require('./route/auth'))
